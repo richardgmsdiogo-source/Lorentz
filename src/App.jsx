@@ -3,6 +3,7 @@ import { useState } from "react";
 import CatalogPage from "./CatalogPage.jsx";
 import ClientPage from "./ClientPage.jsx";
 import "./styles.css";
+import logoLorentz from "./assets/logo-lorentz.png";
 
 function App() {
   const [page, setPage] = useState("catalogo"); // "catalogo" | "cliente"
@@ -14,7 +15,7 @@ function App() {
         <div className="topbar-inner">
           <div className="brand">
             <img
-              src="logo.png"
+              src="logoLorentz"
               alt="Lorentz Decorações"
               className="brand-logo-img"
             />
