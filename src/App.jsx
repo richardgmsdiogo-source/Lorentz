@@ -3,7 +3,7 @@ import { useState } from "react";
 import CatalogPage from "./CatalogPage.jsx";
 import ClientPage from "./ClientPage.jsx";
 import "./styles.css";
-import logoLorentz from "./assets/logo-lorentz.png";
+import logoLorentz from "./assets/logo.png";
 
 function App() {
   const [page, setPage] = useState("catalogo"); // "catalogo" | "cliente"
