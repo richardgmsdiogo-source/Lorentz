@@ -15,7 +15,7 @@ function App() {
         <div className="topbar-inner">
           <div className="brand">
             <img
-              src="logoLorentz"
+              src={logoLorentz}
               alt="Lorentz Decorações"
               className="brand-logo-img"
             />
