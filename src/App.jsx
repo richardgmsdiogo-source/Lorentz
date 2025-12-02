@@ -2,11 +2,18 @@
 import { useState } from "react";
 import CatalogPage from "./CatalogPage.jsx";
 import ClientPage from "./ClientPage.jsx";
+import AdminPage from "./AdminPage.jsx";
 import "./styles.css";
 import logoLorentz from "./assets/logo.png";
 
 function App() {
-  const [page, setPage] = useState("catalogo"); // "catalogo" | "cliente"
+  // controle simples de "rotas"
+  // "catalogo" | "cliente" | "admin"
+  const [page, setPage] = useState("catalogo");
+
+  const goToCatalog = () => setPage("catalogo");
+  const goToClient = () => setPage("cliente");
+  const goToAdmin = () => setPage("admin");
 
   return (
     <>
@@ -35,22 +42,24 @@ function App() {
             </div>
           </div>
 
+          {/* Navegação simples entre catálogo e área do cliente/adm */}
           <nav className="main-nav">
             <button
               type="button"
               className={
                 "nav-link" + (page === "catalogo" ? " nav-active" : "")
               }
-              onClick={() => setPage("catalogo")}
+              onClick={goToCatalog}
             >
               Catálogo
             </button>
             <button
               type="button"
               className={
-                "nav-link" + (page === "cliente" ? " nav-active" : "")
+                "nav-link" +
+                ((page === "cliente" || page === "admin") ? " nav-active" : "")
               }
-              onClick={() => setPage("cliente")}
+              onClick={goToClient}
             >
               Área do cliente
             </button>
@@ -59,7 +68,21 @@ function App() {
       </header>
 
       {/* PÁGINAS */}
-      {page === "catalogo" ? <CatalogPage /> : <ClientPage />}
+      {page === "catalogo" && <CatalogPage />}
+
+      {page === "cliente" && (
+        <ClientPage
+          // só o próprio ClientPage chama isso quando o usuário tem role = 'admin'
+          onOpenAdmin={goToAdmin}
+        />
+      )}
+
+      {page === "admin" && (
+        <AdminPage
+          // botão "Voltar para área do cliente" dentro do painel do ADM
+          onBackToClient={goToClient}
+        />
+      )}
 
       {/* Rodapé comum */}
       <footer className="site-footer">
@@ -75,12 +98,12 @@ function App() {
             </a>
           </span>
         </div>
-      
+
         <div className="footer-right">
           <span className="footer-brand">
             Lorentz Decorações de Festas e Eventos BH e Região
           </span>
-      
+
           {/* Instagram */}
           <a
             href="https://instagram.com/decoracoeslorentz"
@@ -89,11 +112,7 @@ function App() {
             className="footer-icon-link"
             aria-label="Instagram Lorentz Decorações"
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="footer-icon"
-              aria-hidden="true"
-            >
+            <svg viewBox="0 0 24 24" className="footer-icon" aria-hidden="true">
               <rect
                 x="3"
                 y="3"
@@ -116,20 +135,16 @@ function App() {
               <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
             </svg>
           </a>
-      
+
           {/* WhatsApp */}
           <a
-            href="https://wa.me/5531986841995?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Lorentz%20Decora%C3%A7%C3%B5es%20%F0%9F%8E%89"
+            href="https://wa.me/5531973584995?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Lorentz%20Decora%C3%A7%C3%B5es%20%F0%9F%8E%89"
             target="_blank"
             rel="noreferrer"
             className="footer-icon-link"
             aria-label="WhatsApp Lorentz Decorações"
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="footer-icon"
-              aria-hidden="true"
-            >
+            <svg viewBox="0 0 24 24" className="footer-icon" aria-hidden="true">
               <path
                 d="M12 3.2A8.3 8.3 0 0 0 4 11.6a8.2 8.2 0 0 0 1.2 4.3L4 20.8l5-1.3a8.6 8.6 0 0 0 3 .5 8.3 8.3 0 0 0 8.2-8.4A8.3 8.3 0 0 0 12 3.2Z"
                 fill="none"
@@ -146,7 +161,6 @@ function App() {
           </a>
         </div>
       </footer>
-
     </>
   );
 }

@@ -163,7 +163,7 @@ function EventSummary({ cliente }) {
   );
 }
 
-function ClientPage() {
+function ClientPage({ onOpenAdmin }) {
   const [user, setUser] = useState(null);
   const [cliente, setCliente] = useState(null);
   const [role, setRole] = useState(null); // "admin" | "cliente" | null
@@ -465,19 +465,16 @@ function ClientPage() {
                   >
                     <h3 className="subtitulo">Painel administrativo</h3>
                     <p className="hint" style={{ marginBottom: 8 }}>
-                      Você está logado como administrador. Em breve, aqui você
-                      poderá editar o catálogo (categorias, portfólios e
-                      carrosséis) e acionar automações, como envio de e-mails
-                      para clientes.
+                      Você está logado como administrador. Acesse o painel para
+                      cadastrar novas decorações, ajustar dados dos clientes e
+                      controlar as parcelas do evento.
                     </p>
-                    {/* Por enquanto, só um call-to-action visual.
-                        Depois você pode trocar esse botão por link /admin, etc. */}
                     <button
                       type="button"
                       className="btn-secondary"
-                      // futuramente: onClick={() => navegarParaAdmin()}
+                      onClick={() => onOpenAdmin && onOpenAdmin()}
                     >
-                      Acessar área de edição do catálogo
+                      Acessar painel administrativo
                     </button>
                   </section>
                 )}

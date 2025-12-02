@@ -148,7 +148,11 @@ body {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.55));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.55)
+  );
   z-index: 1;
 }
 .hero-content {
@@ -256,8 +260,6 @@ body {
   padding: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
 }
-.card-side {
-}
 .card-header {
   margin-bottom: 12px;
 }
@@ -284,7 +286,7 @@ h2 {
   margin-top: 2px;
 }
 
-/* Tabs de categoria */
+/* Tabs de categoria / abas do admin */
 .catalog-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -373,6 +375,14 @@ h2 {
   margin: 4px 0 8px;
 }
 
+/* Célula que não quebra em duas linhas (nome, e-mail, etc.) */
+.nowrap-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
 /* Forms */
 .stack-form {
   display: flex;
@@ -436,7 +446,7 @@ h2 {
   gap: 8px;
 }
 
-/* Modal e carrossel – versão ajustada */
+/* Modal e carrossel */
 .modal {
   position: fixed;
   inset: 0;
@@ -445,13 +455,11 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-
 .modal-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
 }
-
 .modal-dialog {
   position: relative;
   z-index: 1;
@@ -466,7 +474,6 @@ h2 {
   display: flex;
   flex-direction: column;
 }
-
 .modal-close {
   position: absolute;
   top: 10px;
@@ -478,29 +485,25 @@ h2 {
   color: var(--muted);
   cursor: pointer;
 }
-
 .modal-title {
   font-size: 1.3rem;
   margin-bottom: 4px;
   color: var(--text);
 }
-
 .modal-desc {
   font-size: 0.9rem;
   color: var(--muted);
   margin-bottom: 12px;
 }
 
-/* CONTÊINER DO CARROSSEL */
+/* Contêiner do carrossel */
 .carousel {
   position: relative;
   margin-top: 4px;
 }
-
-/* Caixa da imagem: mantém proporção e centraliza */
 .carousel-viewport {
   width: 100%;
-  aspect-ratio: 4 / 3;           /* mantém formato 4:3 */
+  aspect-ratio: 4 / 3;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
@@ -508,15 +511,13 @@ h2 {
   align-items: center;
   justify-content: center;
 }
-
-/* Imagem centralizada e limitada */
 .carousel-image {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover;             /* troca para contain se quiser mostrar tudo */
+  object-fit: cover;
 }
 
-/* Botões de navegação: um em cada lado, no meio da imagem */
+/* Botões do carrossel */
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -534,22 +535,16 @@ h2 {
   color: #fff;
   transition: background 0.15s ease, transform 0.05s ease;
 }
-
 .carousel-arrow:hover {
   background: rgba(0, 0, 0, 0.65);
   transform: translateY(-50%) scale(1.03);
 }
-
-/* Primeiro botão (voltar) fica à esquerda, segundo (próximo) à direita */
 .carousel > .carousel-arrow:first-of-type {
   left: 14px;
 }
-
 .carousel > .carousel-arrow:last-of-type {
   right: 14px;
 }
-
-/* Indicador embaixo (1 / 3) */
 .carousel-indicator {
   font-size: 0.8rem;
   color: var(--muted);
@@ -557,17 +552,15 @@ h2 {
   margin-top: 8px;
 }
 
-/* Responsivo: modal mais estreito no celular */
+/* Responsivo do modal */
 @media (max-width: 640px) {
   .modal-dialog {
     width: 96vw;
     padding: 14px 14px 18px;
   }
-
   .carousel-viewport {
-    aspect-ratio: 3 / 4;   /* um pouco mais “alto” no celular */
+    aspect-ratio: 3 / 4;
   }
-
   .carousel-arrow {
     width: 34px;
     height: 34px;
@@ -575,7 +568,7 @@ h2 {
   }
 }
 
-/* imagem dentro do modal */
+/* imagem dentro do modal (fallback antigo) */
 .carousel-img {
   max-height: 70vh;
   max-width: 100%;
@@ -597,40 +590,33 @@ h2 {
   color: var(--muted, #6b6470);
   flex-wrap: wrap;
 }
-
 .footer-left,
 .footer-right {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
-
 .footer-left {
   flex: 1;
 }
-
 .footer-right {
   flex: 1;
   justify-content: flex-end;
   text-align: right;
   flex-wrap: wrap;
 }
-
 .footer-madeby a,
 .footer-right a {
   color: inherit;
   text-decoration: none;
 }
-
 .footer-madeby a:hover,
 .footer-right a:hover {
   text-decoration: underline;
 }
-
 .footer-brand {
   white-space: nowrap;
 }
-
 .footer-icon-link {
   display: inline-flex;
   align-items: center;
@@ -640,24 +626,19 @@ h2 {
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
-
 .footer-icon-link:hover {
   transform: translateY(-1px) scale(1.03);
   background-color: rgba(0, 0, 0, 0.04);
 }
-
 .footer-icon {
   width: 20px;
   height: 20px;
 }
-
-/* Quebra melhor em telas pequenas */
 @media (max-width: 640px) {
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .footer-right {
     justify-content: flex-start;
     text-align: left;
@@ -667,25 +648,83 @@ h2 {
 /* ===========================
    TABELA DE PAGAMENTOS
    =========================== */
-
 .tabela-pagamentos {
   width: 100%;
   border-collapse: collapse;
 }
-
 .tabela-pagamentos th,
 .tabela-pagamentos td {
   text-align: center;
   font-size: 0.85rem;
   padding: 8px 4px;
 }
-
 .tabela-pagamentos th {
   font-weight: 600;
 }
-
 .tabela-pagamentos tbody tr:nth-child(even) {
-  background: #f6f5f7; /* ou var(--card2) */
+  background: #f6f5f7;
+}
+
+/* ===========================
+   CALENDÁRIO (Gestão)
+   =========================== */
+.calendar-card {
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  background: #ffffff;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  font-size: 0.8rem;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 2px 0;
+}
+
+.calendar-day {
+  min-height: 32px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+.calendar-day.today {
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.18);
+}
+
+.calendar-day.has-event {
+  background: #fff4f8;
+  box-shadow: 0 0 0 1px rgba(232, 143, 189, 0.35);
+  color: #b83280;
+  font-weight: 600;
+}
+
+.calendar-day.selected {
+  background: linear-gradient(135deg, var(--accent), var(--accent-rose));
+  color: #ffffff;
 }
 
 /* Classes utilitárias */
